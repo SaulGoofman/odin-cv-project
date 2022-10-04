@@ -1,0 +1,7 @@
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: darkblue;
+    box-shadow: 0px 2px 5px darkblue;
+}
