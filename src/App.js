@@ -7,12 +7,33 @@ class App extends Component{
     super();
     this.state = {
       inPreview: false,
+      personal: null,
+      academic: null,
+      professional: null,
     }
   }
 
   handlePreviewChange = (e) => {
     this.setState({
       inPreview: !this.state.inPreview,
+    });
+  }
+
+  setPersonal = (personObject) => {
+    this.setState({
+        personal: personObject,
+    });
+  }
+
+  setAcademic = (academicObject) => {
+    this.setState({
+        academic: academicObject,
+    });
+  }
+
+  setProf = (profObject) => {
+    this.setState({
+        professional: profObject,
     });
   }
 
@@ -35,7 +56,14 @@ class App extends Component{
       return (
         <div id="app">
           {navbar}
-          <FillDetails />
+          <FillDetails 
+            setPersonal={this.setPersonal} 
+            setAcademic={this.setAcademic}
+            setProf={this.setProf}
+            personal={this.state.personal} 
+            academic={this.state.academic}
+            prof={this.state.professional}
+          />
         </div>
       );
     }

@@ -3,21 +3,29 @@ import React, { Component } from "react";
 class Personal extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            saved: false,
-            firstName: '',
-            lastName: '',
-            profSum: '',
-            email: '',
-            phone: '',
-            github: '',
-            linkedin: '',
+        if (this.props.personal === null) {
+            this.state = {
+                saved: false,
+                firstName: '',
+                lastName: '',
+                profSum: '',
+                email: '',
+                phone: '',
+                github: '',
+                linkedin: '',
+            }
+        }
+        else {
+            this.state = this.props.personal;
+            console.log(this.state);
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.changeSaved();
+        console.log(this.state);
+        this.props.setPersonal(this.state);
     }
 
     handleChange = (e) => {
@@ -26,10 +34,10 @@ class Personal extends Component {
         })
     }
 
-    changeSaved = (e) => {
+    changeSaved(e) {
         this.setState({
             saved: !this.state.saved,
-        })
+        });
     }
 
     handleReset = (e) => {
